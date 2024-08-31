@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ihl95.nuclear.nuclearPlant.application.dto.NuclearPlantCompleteDTO;
 import com.ihl95.nuclear.nuclearPlant.application.dto.NuclearPlantDTO;
 import com.ihl95.nuclear.nuclearPlant.application.exception.NuclearPlantException;
+import com.ihl95.nuclear.nuclearPlant.application.service.CountNuclearPlants;
 import com.ihl95.nuclear.nuclearPlant.application.service.NuclearPlantService;
 
 @RestController
@@ -25,6 +26,9 @@ public class NuclearPlantController {
 
     @Autowired
     private NuclearPlantService nuclearPlantService;
+
+    @Autowired
+    private CountNuclearPlants countNuclearPlants;
 
     @GetMapping
     public ResponseEntity<List<NuclearPlantDTO>> getAllNuclearPlants() {
@@ -41,11 +45,15 @@ public class NuclearPlantController {
         return ResponseEntity.ok(nuclearPlant);
     }
 
-/*     @GetMapping("/complete/{id}")
-    public ResponseEntity<NuclearPlantCompleteDTO> getNuclearPlantCompleteById(@PathVariable Long id) {
-        NuclearPlantCompleteDTO nuclearPlantComplete = nuclearPlantService.getNuclearPlantCompleteById(id);
-        return ResponseEntity.ok(nuclearPlantComplete);
-    } */
+    /*
+     * @GetMapping("/complete/{id}")
+     * public ResponseEntity<NuclearPlantCompleteDTO>
+     * getNuclearPlantCompleteById(@PathVariable Long id) {
+     * NuclearPlantCompleteDTO nuclearPlantComplete =
+     * nuclearPlantService.getNuclearPlantCompleteById(id);
+     * return ResponseEntity.ok(nuclearPlantComplete);
+     * }
+     */
 
     @PostMapping
     public ResponseEntity<NuclearPlantDTO> createNuclearPlant(@RequestBody NuclearPlantDTO nuclearPlantDTO) {
@@ -66,4 +74,11 @@ public class NuclearPlantController {
         nuclearPlantService.deleteNuclearPlant(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> countNuclearPlants() {
+        long count = countNuclearPlants.countNuclearPlants();
+        return ResponseEntity.ok(count);
+    }
+
 }

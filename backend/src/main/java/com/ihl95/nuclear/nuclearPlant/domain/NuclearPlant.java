@@ -34,24 +34,4 @@ public class NuclearPlant {
     private String name; // Nombre de la planta
     private String location; // Ubicación
 
-    @OneToMany(mappedBy = "nuclearPlant", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Reactor> reactors; // Relación con Reactor
-
-    @OneToMany(mappedBy = "nuclearPlant", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<MaintenancePlan> maintenancePlans; // Relación con MaintenancePlan
-
-    @OneToMany(mappedBy = "nuclearPlant", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<EmergencyPlan> emergencyPlans; // Relación con EmergencyPlan
-
-    @OneToMany(mappedBy = "nuclearPlant", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Incident> incidents; // Relación con Incident
-
-    @OneToMany(mappedBy = "nuclearPlant", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Operator> operators; // Relación con Operator
-
 }

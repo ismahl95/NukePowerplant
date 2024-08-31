@@ -8,4 +8,6 @@ import com.ihl95.nuclear.nuclearPlant.domain.NuclearPlant;
 @Repository
 public interface NuclearPlantRepository extends JpaRepository<NuclearPlant, Long> {
 
+  //Count the number of nuclear plants using JPA
+  long count();
 }
